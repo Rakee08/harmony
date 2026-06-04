@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {colors, spacing, typography, radius} from '../theme';
 
 export const tabs = ['Library', 'Songs', 'Albums', 'Settings'] as const;
 export type TabName = (typeof tabs)[number];
@@ -32,25 +33,25 @@ const styles = StyleSheet.create({
   tabBar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingVertical: 12,
+    paddingVertical: spacing.gutter,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: '#2f2f39',
-    backgroundColor: '#0f0f16',
+    borderTopColor: colors.border,
+    backgroundColor: colors.backgroundDark,
   },
   tabButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-    borderRadius: 999,
+    paddingVertical: spacing.tiny,
+    paddingHorizontal: spacing.gutter,
+    borderRadius: radius.pill,
   },
   tabButtonActive: {
-    backgroundColor: '#3E3D7D',
+    backgroundColor: colors.primary,
   },
   tabLabel: {
-    color: '#8A8AA8',
-    fontSize: 13,
+    color: colors.muted,
+    fontSize: typography.xsmall,
     fontWeight: '600',
   },
   tabLabelActive: {
-    color: '#FFFFFF',
+    color: colors.text,
   },
 });
