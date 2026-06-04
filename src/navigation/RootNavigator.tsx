@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {SafeAreaView, View, StyleSheet} from 'react-native';
 
 import {BottomTabBar, TabName} from '../components/BottomTabBar';
+import {colors} from '../theme';
 import {LibraryScreen} from '../screens/LibraryScreen';
 import {SongsScreen} from '../screens/SongsScreen';
 import {AlbumsScreen} from '../screens/AlbumsScreen';
@@ -28,7 +29,7 @@ export const RootNavigator = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#09090E',
+    backgroundColor: colors.backgroundDark,
   },
   content: {
     flex: 1,

@@ -1,7 +1,11 @@
 import React from 'react';
-import {ScrollView, View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {Screen} from '../components/Screen';
+import {AppText} from '../components/AppText';
+import {Card} from '../components/Card';
 import {LibraryStatCard} from '../components/LibraryStatCard';
 import {LibraryTileCard} from '../components/LibraryTileCard';
+import {spacing, radius, colors} from '../theme';
 
 const tiles = [
   {title: 'Songs', subtitle: '2,184 tracks'},
@@ -11,26 +15,40 @@ const tiles = [
 ];
 
 export const LibraryScreen = () => (
-  <ScrollView contentContainerStyle={styles.container}>
+  <Screen scrollable style={styles.content}>
     <View style={styles.topRow}>
-      <Text style={styles.title}>Library</Text>
-      <Text style={styles.subtitle}>Your recent listening, stats, and collections.</Text>
+      <AppText variant="title">Library</AppText>
+      <AppText variant="body" color="mutedLight" style={styles.subtitle}>
+        Your recent listening, stats, and collections.
+      </AppText>
     </View>
 
-    <View style={styles.recentCard}>
-      <Text style={styles.recentLabel}>Recently Played</Text>
-      <Text style={styles.recentTitle}>Dream in Purple</Text>
-      <Text style={styles.recentMeta}>Torn Sounds • 24 tracks</Text>
+    <Card style={styles.recentCard}>
+      <AppText variant="caption" color="muted" style={styles.recentLabel}>
+        RECENTLY PLAYED
+      </AppText>
+      <AppText variant="heading" style={styles.recentTitle}>
+        Dream in Purple
+      </AppText>
+      <AppText variant="xsmall" color="mutedLight" style={styles.recentMeta}>
+        Torn Sounds • 24 tracks
+      </AppText>
       <View style={styles.recentFooter}>
-        <View style={styles.recentBadge}>
-          <Text style={styles.recentBadgeText}>Ambient</Text>
-        </View>
-        <Text style={styles.recentTime}>2h 16m</Text>
+        <Card style={styles.recentBadge}>
+          <AppText variant="caption" weight="700">
+            Ambient
+          </AppText>
+        </Card>
+        <AppText variant="caption" color="muted">
+          2h 16m
+        </AppText>
       </View>
-    </View>
+    </Card>
 
     <View style={styles.sectionHeader}>
-      <Text style={styles.sectionTitle}>Quick Stats</Text>
+      <AppText variant="large" weight="700">
+        Quick Stats
+      </AppText>
     </View>
     <View style={styles.statsRow}>
       <LibraryStatCard value="1,234" label="Songs" />
@@ -39,8 +57,12 @@ export const LibraryScreen = () => (
     </View>
 
     <View style={styles.sectionHeader}>
-      <Text style={styles.sectionTitle}>Browse</Text>
-      <Text style={styles.sectionMeta}>Jump back into your library collections</Text>
+      <AppText variant="large" weight="700">
+        Browse
+      </AppText>
+      <AppText variant="caption" color="muted">
+        Jump back into your library collections
+      </AppText>
     </View>
     <View style={styles.tileGrid}>
       {tiles.map(tile => (
@@ -51,53 +73,35 @@ export const LibraryScreen = () => (
         />
       ))}
     </View>
-  </ScrollView>
+  </Screen>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    paddingBottom: 16,
-    backgroundColor: '#09090E',
+  content: {
+    paddingHorizontal: spacing.container,
+    paddingVertical: spacing.md,
   },
   topRow: {
-    marginBottom: 24,
-  },
-  title: {
-    color: '#FFFFFF',
-    fontSize: 32,
-    fontWeight: '700',
-    marginBottom: 8,
+    marginBottom: spacing.lg,
   },
   subtitle: {
-    color: '#B3B3C4',
-    fontSize: 14,
-    lineHeight: 20,
+    marginTop: spacing.sm,
     maxWidth: '90%',
   },
   recentCard: {
-    backgroundColor: '#15151D',
-    borderRadius: 24,
-    padding: 22,
-    marginBottom: 24,
+    marginBottom: spacing.lg,
+    borderRadius: radius.xl,
   },
   recentLabel: {
-    color: '#8A8AA8',
-    fontSize: 12,
-    marginBottom: 10,
+    marginBottom: spacing.tiny,
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
   recentTitle: {
-    color: '#FFFFFF',
-    fontSize: 24,
-    fontWeight: '700',
-    marginBottom: 6,
+    marginBottom: spacing.tiny,
   },
   recentMeta: {
-    color: '#B3B3C4',
-    fontSize: 13,
-    marginBottom: 18,
+    marginBottom: spacing.md,
   },
   recentFooter: {
     flexDirection: 'row',
@@ -105,37 +109,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   recentBadge: {
-    backgroundColor: '#27273F',
-    borderRadius: 999,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-  },
-  recentBadgeText: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontWeight: '700',
-  },
-  recentTime: {
-    color: '#8A8AA8',
-    fontSize: 12,
+    borderRadius: radius.pill,
+    paddingHorizontal: spacing.gutter,
+    paddingVertical: spacing.tiny,
+    backgroundColor: colors.cardAlt,
+    borderWidth: 0,
   },
   sectionHeader: {
-    marginBottom: 14,
-  },
-  sectionTitle: {
-    color: '#FFFFFF',
-    fontSize: 18,
-    fontWeight: '700',
-    marginBottom: 6,
-  },
-  sectionMeta: {
-    color: '#8A8AA8',
-    fontSize: 12,
-    maxWidth: '85%',
+    marginBottom: spacing.md,
   },
   statsRow: {
     flexDirection: 'row',
-    marginBottom: 24,
+    marginBottom: spacing.lg,
   },
   tileGrid: {
     flexDirection: 'row',

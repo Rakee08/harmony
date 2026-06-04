@@ -1,40 +1,35 @@
 import React from 'react';
-import {ScrollView, View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {Screen} from '../components/Screen';
+import {AppText} from '../components/AppText';
+import {Card} from '../components/Card';
+import {spacing} from '../theme';
 
 export const AlbumsScreen = () => (
-  <ScrollView contentContainerStyle={styles.container}>
-    <Text style={styles.title}>Albums</Text>
-    <Text style={styles.subtitle}>All your collections in one place.</Text>
-    <View style={styles.placeholderCard}>
-      <Text style={styles.placeholderText}>Hardcoded albums content will appear here.</Text>
-    </View>
-  </ScrollView>
+  <Screen scrollable style={styles.content}>
+    <AppText variant="large" weight="700" style={styles.title}>
+      Albums
+    </AppText>
+    <AppText variant="body" color="mutedLight" style={styles.subtitle}>
+      All your collections in one place.
+    </AppText>
+    <Card>
+      <AppText variant="body" color="muted">
+        Hardcoded albums content will appear here.
+      </AppText>
+    </Card>
+  </Screen>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    backgroundColor: '#09090E',
+  content: {
+    paddingHorizontal: spacing.container,
+    paddingVertical: spacing.md,
   },
   title: {
-    color: '#FFFFFF',
-    fontSize: 28,
-    fontWeight: '700',
-    marginBottom: 8,
+    marginBottom: spacing.sm,
   },
   subtitle: {
-    color: '#B3B3C4',
-    fontSize: 14,
-    marginBottom: 22,
-  },
-  placeholderCard: {
-    backgroundColor: '#15151D',
-    borderRadius: 18,
-    padding: 20,
-  },
-  placeholderText: {
-    color: '#8A8AA8',
-    fontSize: 14,
-    lineHeight: 20,
+    marginBottom: spacing.lg,
   },
 });

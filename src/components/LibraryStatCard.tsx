@@ -1,5 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {AppText} from './AppText';
+import {spacing, radius, colors} from '../theme';
 
 export const LibraryStatCard = ({
   value,
@@ -9,30 +11,26 @@ export const LibraryStatCard = ({
   label: string;
 }) => (
   <View style={styles.card}>
-    <Text style={styles.value}>{value}</Text>
-    <Text style={styles.label}>{label}</Text>
+    <AppText variant="heading" weight="700" style={styles.value}>
+      {value}
+    </AppText>
+    <AppText variant="caption" color="muted">
+      {label}
+    </AppText>
   </View>
 );
 
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    backgroundColor: '#15151D',
-    borderRadius: 18,
-    paddingVertical: 18,
-    paddingHorizontal: 16,
-    marginRight: 12,
+    backgroundColor: colors.card,
+    borderRadius: radius.card,
+    paddingVertical: spacing.card,
+    paddingHorizontal: spacing.md,
+    marginRight: spacing.gutter,
     minHeight: 110,
   },
   value: {
-    color: '#FFFFFF',
-    fontSize: 24,
-    fontWeight: '700',
-    marginBottom: 6,
-  },
-  label: {
-    color: '#8A8AA8',
-    fontSize: 12,
-    lineHeight: 18,
+    marginBottom: spacing.tiny,
   },
 });
